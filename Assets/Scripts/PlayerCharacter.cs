@@ -7,42 +7,51 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] float speed;
     float horizontal;
     float horizontalMovement;
-    bool flipped;
 
     Rigidbody2D body;
     SpriteRenderer spriteRenderer;
 
     [SerializeField] GameObject PlayerLaser;
 
+    float screenHeight;
+
     void Start ()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
         body = this.GetComponent<Rigidbody2D>();
+        screenHeight = Screen.height;
 	}
 	
 	void Update ()
     {
-        flipped = spriteRenderer.flipX;
         horizontal = Input.GetAxis("Horizontal");
         horizontalMovement = speed * horizontal;
 
-        if (horizontal > 0 && flipped)
+        int i = 0;
+        while(i < Input.touchCount)
         {
-           spriteRenderer.flipX = false;
+            if(Input.GetTouch(i).position.x > screenHeight / 2)
+            {
+                //move right
+                spriteRenderer.flipX = false;
+            }
+            if (Input.GetTouch(i).position.x < screenHeight / 2)
+            {
+                //move left
+                spriteRenderer.flipX = true;
+                Debug.Log("touch left");
+            }
+            i++;
         }
-        if (horizontal < 0 && !flipped)
-        {
-            spriteRenderer.flipX = true;
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Shoot();
-        }
+       if(Input.GetKeyDown(KeyCode.Space))
+       {
+           Shoot();
+       }
     }
 
     void FixedUpdate()
     {
-        body.velocity = new Vector2(horizontalMovement, 0);
+        body.velocity = new Vector2(horizontalMovement * speed, 0);
     }
 
     void Shoot()

@@ -5,23 +5,27 @@ using UnityEngine;
 public class BadSphere : MonoBehaviour
 {
 
-    [SerializeField] Transform Laser;
+    [SerializeField] Transform laser;
     Vector2 shootDirection;
     Vector2 direction = new Vector2(0, -1);
+
+    [SerializeField] Transform flameBall;
+    [SerializeField] Transform stoneBall;
 
     enum State
     {
         IDLE,
         LASER,
         FLAMES,
-        STONE
+        STONE,
+        LENGTH
     }
     State state = State.IDLE;
 
 	void Update ()
     {
         shootDirection = transform.position - new Vector3(0,-1,0);
-        Debug.Log(state);
+        //Debug.Log(state);
         switch (state)
         {
             case State.IDLE:
@@ -36,9 +40,16 @@ public class BadSphere : MonoBehaviour
                 break;
 
             case State.FLAMES:
+                for(int i = 0; i <= 1; i++)
+                {
+                    flameFire(Quaternion.AngleAxis(i * Random.Range(0, 90), new Vector3(0, 0, 1)) * direction.normalized);
+                }
+                Destroy(this.gameObject);
                 break;
 
             case State.STONE:
+                StoneBall();
+                Destroy(this.gameObject);
                 break;
         }
 	}
@@ -47,14 +58,26 @@ public class BadSphere : MonoBehaviour
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerLaser"))
         {
-            state = State.LASER;
+            state = (State)Random.Range(1, 4);
         }
     }
 
     void LaserFire(Vector2 Direction)
     {
-        var laserShot = Instantiate(Laser, transform.position, transform.rotation) as Transform;
+        var laserShot = Instantiate(laser, transform.position, transform.rotation) as Transform;
         BadLaser shot = laserShot.gameObject.GetComponent<BadLaser>();
         shot.Direction = Direction.normalized;
+    }
+
+    void flameFire(Vector2 Direction)
+    {
+        var flameShot = Instantiate(flameBall, transform.position, transform.rotation) as Transform;
+        FlamesBall shot = flameShot.gameObject.GetComponent<FlamesBall>();
+        shot.Direction = Direction.normalized;
+    }
+
+    void StoneBall()
+    {
+        Instantiate(stoneBall,transform.position, transform.rotation);
     }
 }
