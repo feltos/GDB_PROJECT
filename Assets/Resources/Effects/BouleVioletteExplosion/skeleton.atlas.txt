@@ -1,0 +1,62 @@
+
+skeleton.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+boule_violette
+  rotate: false
+  xy: 2, 2
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+boule_violette2
+  rotate: false
+  xy: 233, 177
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+boule_violette3
+  rotate: false
+  xy: 233, 2
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+boule_violette4
+  rotate: false
+  xy: 464, 177
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+nuage1
+  rotate: false
+  xy: 464, 2
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+nuage2
+  rotate: false
+  xy: 695, 177
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+nuage3
+  rotate: false
+  xy: 695, 2
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1
+nuage4
+  rotate: false
+  xy: 2, 177
+  size: 229, 173
+  orig: 229, 173
+  offset: 0, 0
+  index: -1

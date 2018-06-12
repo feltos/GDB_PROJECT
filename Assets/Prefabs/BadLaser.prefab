@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61778628828311776}
   - component: {fileID: 50700201497351668}
   - component: {fileID: 114521488596853218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BadLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  etincelles: {fileID: 1701607094928184, guid: e8cda78aa5f76e944a1b6da9cee4c56d, type: 2}
 --- !u!212 &212262387007342914
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -136,7 +137,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 809188476d34de940b9d8d5dc38d46e4, type: 3}
-  m_Color: {r: 0.9811321, g: 0, b: 0.25814864, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

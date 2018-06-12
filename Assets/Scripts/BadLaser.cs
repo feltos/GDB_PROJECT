@@ -9,6 +9,8 @@ public class BadLaser : MonoBehaviour
     Vector2 movement;
     Vector2 direction = new Vector2(0, -1);
     Rigidbody2D body;
+    [SerializeField] GameObject etincelles;
+
 
     public Vector2 Direction
     {
@@ -44,10 +46,14 @@ public class BadLaser : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
+            var etincellesTemp = Instantiate(etincelles, transform.position, transform.rotation);
+            Destroy(etincellesTemp, 3f);
             direction = new Vector2(-direction.x,direction.y);
         }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            var etincellesTemp = Instantiate(etincelles, transform.position, transform.rotation);
+            Destroy(etincellesTemp, 3f);
             Destroy(this.gameObject);
         }
     }

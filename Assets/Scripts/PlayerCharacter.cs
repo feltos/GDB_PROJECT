@@ -13,6 +13,7 @@ public class PlayerCharacter : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     [SerializeField] GameObject PlayerLaser;
+    [SerializeField] GameObject restart;
 
     float screenHeight;
 
@@ -66,7 +67,7 @@ public class PlayerCharacter : MonoBehaviour
 
             if(Input.touchCount == 1)
             {
-                //Shoot();
+                Shoot();
             }
         }
        if(Input.GetKeyDown(KeyCode.Space))
@@ -83,5 +84,14 @@ public class PlayerCharacter : MonoBehaviour
     void Shoot()
     {
         Instantiate(PlayerLaser, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), transform.rotation);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("ennemy") || collision.gameObject.layer == LayerMask.NameToLayer("DeadZone"))
+        {
+            restart.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }

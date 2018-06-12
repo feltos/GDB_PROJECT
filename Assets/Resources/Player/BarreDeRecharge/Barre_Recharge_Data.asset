@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f63a1aee4f60548acface52ab96156, type: 3}
+  m_Name: Barre_Recharge_Data
+  m_EditorClassIdentifier: 
+  dataName: Barre_Recharge
+  dragonBonesJSON: {fileID: 4900000, guid: aeb363f8741804c418cdf89d63c0dc39, type: 3}
+  textureAtlas:
+  - textureAtlasJSON: {fileID: 4900000, guid: fcb6f288fda0c394bb46c1cf1b3119ee, type: 3}
+    texture: {fileID: 2800000, guid: 1aae03189df3f9b46b16a293f94b3e8d, type: 3}
+    material: {fileID: 2100000, guid: 41e16cc2963267a4b97f5fb98ba80809, type: 2}
+    uiMaterial: {fileID: 0}

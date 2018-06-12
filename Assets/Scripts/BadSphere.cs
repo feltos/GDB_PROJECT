@@ -12,6 +12,12 @@ public class BadSphere : MonoBehaviour
     [SerializeField] Transform flameBall;
     [SerializeField] Transform stoneBall;
     [SerializeField] Sprite[] spriteArray;
+    Sprite sprite;
+
+    [SerializeField] GameObject ballAnimRouge;
+    [SerializeField] GameObject ballAnimBleue;
+    [SerializeField] GameObject ballAnimViolette;
+
 
     enum State
     {
@@ -26,7 +32,7 @@ public class BadSphere : MonoBehaviour
     void Start()
     {
         int spriteRandom = Random.Range(0, spriteArray.Length);
-        this.GetComponent<SpriteRenderer>().sprite = spriteArray[spriteRandom];
+        sprite = this.GetComponent<SpriteRenderer>().sprite = spriteArray[spriteRandom];
     }
 
 	void Update ()
@@ -65,6 +71,21 @@ public class BadSphere : MonoBehaviour
     {
         if (collider.gameObject.layer == LayerMask.NameToLayer("PlayerLaser"))
         {
+            if(sprite.name == "boule_bleue")
+            {
+                var ballBlueTemp = Instantiate(ballAnimBleue, transform.position, transform.rotation);
+                Destroy(ballBlueTemp, 3f);
+            }
+            if (sprite.name == "boule_rouge")
+            {
+                var ballRedTemp = Instantiate(ballAnimRouge, transform.position, transform.rotation);
+                Destroy(ballRedTemp, 3f);
+            }
+            if (sprite.name == "boule_violette")
+            {
+                var ballVioletteTemp = Instantiate(ballAnimViolette, transform.position, transform.rotation);
+                Destroy(ballVioletteTemp, 3f);
+            }
             state = (State)Random.Range(1, 4);
         }
     }

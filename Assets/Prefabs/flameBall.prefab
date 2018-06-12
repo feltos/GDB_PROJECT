@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  flamesZone: {fileID: 1040156870387118, guid: 372fccf7ab3c01848b963d0a60583d40, type: 2}
+  flamesZone: {fileID: 1536719382709458, guid: 6d5e425132595e14ab350e78de9506fc, type: 2}
 --- !u!212 &212851465430580946
 SpriteRenderer:
   m_ObjectHideFlags: 1
