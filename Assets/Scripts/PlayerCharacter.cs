@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DragonBones;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -15,33 +16,58 @@ public class PlayerCharacter : MonoBehaviour
 
     float screenHeight;
 
+    UnityArmatureComponent armatureComponent;
+
     void Start ()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
         body = this.GetComponent<Rigidbody2D>();
-        screenHeight = Screen.height;
-	}
+        screenHeight = Screen.width;
+        armatureComponent = GetComponent<UnityArmatureComponent>();
+        Input.multiTouchEnabled = true;
+    }
 	
 	void Update ()
     {
         horizontal = Input.GetAxis("Horizontal");
-        horizontalMovement = speed * horizontal;
-
+        
         int i = 0;
-        while(i < Input.touchCount)
+
+        if (Input.touchCount <= 0 && armatureComponent.animationName != "IDLE")
         {
+            armatureComponent.animationName = "IDLE";
+            armatureComponent.animation.Play("IDLE");
+        }
+
+        if (i < Input.touchCount)
+        {           
             if(Input.GetTouch(i).position.x > screenHeight / 2)
             {
                 //move right
-                spriteRenderer.flipX = false;
+                horizontal = 1;
+                armatureComponent.armature.flipX = false;
+                if(armatureComponent.animation.isPlaying && armatureComponent.animationName != "COURSE")
+                {
+                    armatureComponent.animationName = "COURSE";
+                    armatureComponent.animation.Play("COURSE");
+                }
             }
             if (Input.GetTouch(i).position.x < screenHeight / 2)
             {
                 //move left
-                spriteRenderer.flipX = true;
-                Debug.Log("touch left");
+                horizontal = -1;
+                armatureComponent.armature.flipX = true;
+                if (armatureComponent.animation.isPlaying && armatureComponent.animationName != "COURSE")
+                {
+                    armatureComponent.animationName = "COURSE";
+                    armatureComponent.animation.Play("COURSE");
+                }
             }
-            i++;
+
+            if(Input.touchCount == 1)
+            {
+                //Shoot();
+            }
         }
        if(Input.GetKeyDown(KeyCode.Space))
        {
@@ -51,7 +77,7 @@ public class PlayerCharacter : MonoBehaviour
 
     void FixedUpdate()
     {
-        body.velocity = new Vector2(horizontalMovement * speed, 0);
+        body.velocity = new Vector2(horizontal * speed, 0);
     }
 
     void Shoot()

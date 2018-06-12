@@ -11,6 +11,7 @@ public class BadSphere : MonoBehaviour
 
     [SerializeField] Transform flameBall;
     [SerializeField] Transform stoneBall;
+    [SerializeField] Sprite[] spriteArray;
 
     enum State
     {
@@ -21,6 +22,12 @@ public class BadSphere : MonoBehaviour
         LENGTH
     }
     State state = State.IDLE;
+
+    void Start()
+    {
+        int spriteRandom = Random.Range(0, spriteArray.Length);
+        this.GetComponent<SpriteRenderer>().sprite = spriteArray[spriteRandom];
+    }
 
 	void Update ()
     {

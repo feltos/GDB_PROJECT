@@ -92,6 +92,10 @@ MonoBehaviour:
   laser: {fileID: 4674279353943776, guid: 880cc36d5c8ef7149bb1838ce0c05efb, type: 2}
   flameBall: {fileID: 4737579377717178, guid: d60fb73e557cf6340812171fadd8772a, type: 2}
   stoneBall: {fileID: 4381874214636806, guid: 95d50dcdfc9880d4e80f0dc1dfa2debb, type: 2}
+  spriteArray:
+  - {fileID: 21300000, guid: 05cf02f5a0bcb744b8419f1ce1966067, type: 3}
+  - {fileID: 21300000, guid: 803c418d9a45fe1418cabe2b144fc584, type: 3}
+  - {fileID: 21300000, guid: c8683f533e5b11c41834d6627d006780, type: 3}
 --- !u!212 &212056920018395260
 SpriteRenderer:
   m_ObjectHideFlags: 1
